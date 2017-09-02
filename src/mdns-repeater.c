@@ -33,11 +33,11 @@
 #include <arpa/inet.h>
 #include <net/if.h>
 
-#define PACKAGE "mdns-repeater"
+#define PROG "mdns-repeater"
 #define MDNS_ADDR "224.0.0.251"
 #define MDNS_PORT 5353
 
-#define PIDFILE "/var/run/" PACKAGE ".pid"
+#define PIDFILE "/var/run/" PROG ".pid"
 
 struct if_sock {
 	const char *ifname;		/* interface name  */
@@ -70,7 +70,7 @@ void log_message(int loglevel, char *fmt_str, ...) {
 	buf[2047] = 0;
 
 	if (foreground) {
-		fprintf(stderr, "%s: %s\n", PACKAGE, buf);
+		fprintf(stderr, "%s: %s\n", PROG, buf);
 	} else {
 		syslog(loglevel, "%s", buf);
 	}
@@ -288,7 +288,7 @@ static void daemonize() {
 }
 
 static void show_help(const char *progname) {
-	fprintf(stderr, "mDNS repeater (version " HGVERSION ")\n");
+	fprintf(stderr, "mDNS repeater (version " VERSION ")\n");
 	fprintf(stderr, "Copyright (C) 2011 Darell Tan\n\n");
 
 	fprintf(stderr, "usage: %s [ -f ] <ifdev> ...\n", progname);
@@ -351,7 +351,7 @@ int main(int argc, char *argv[]) {
 		exit(2);
 	}
 
-	openlog(PACKAGE, LOG_PID | LOG_CONS, LOG_DAEMON);
+	openlog(PROG, LOG_PID | LOG_CONS, LOG_DAEMON);
 	if (! foreground)
 		daemonize();
 	else {

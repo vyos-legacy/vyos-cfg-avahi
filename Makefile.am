@@ -7,6 +7,9 @@ vsbindir = $(vprefix)/sbin
 
 sbin_SCRIPTS = scripts/ubnt-mdns-repeater.pl
 
+sbin_PROGRAMS = src/mdns-repeater
+src_mdns_repeater_SOURCES = src/mdns-repeater.c
+
 cpiop = find  . ! -regex '\(.*~\|.*\.bak\|.*\.swp\|.*\#.*\#\)' -print0 | \
   cpio -0pd
 

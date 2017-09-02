@@ -10,7 +10,7 @@ use Vyatta::Config;
 use warnings;
 use strict;
 
-my $executable = '/usr/sbin/mdns-repeater';
+my $executable = '/opt/vyatta/sbin/mdns-repeater';
 my $pid_file = '/var/run/mdns-repeater.pid';
 
 sub stop_daemon {
