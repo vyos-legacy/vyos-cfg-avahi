@@ -1,0 +1,14 @@
+priority: 900
+help: mDNS reflector service
+end:
+    sudo sed -i 's/^.*enable-reflector=.*$/enable-reflector=yes/' \
+        /etc/avahi/avahi-daemon.conf
+    sudo sed -i 's/^.*cache-entries-max=.*$/cache-entries-max=0/' \
+        /etc/avahi/avahi-daemon.conf
+    if [ "$COMMIT_ACTION" == DELETE ]; then
+        sudo /etc/init.d/avahi-daemon stop
+        sudo /etc/init.d/dbus stop
+    else
+        sudo /etc/init.d/dbus start
+        sudo /etc/init.d/avahi-daemon start
+    fi

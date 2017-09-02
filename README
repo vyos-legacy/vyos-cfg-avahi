@@ -1,0 +1,17 @@
+This package has VyOS avahi - mDNS/DNS-SD configuration templates and scripts.
+
+Available configuration nodes:
+
+service {
+    mdns {
+        reflector
+        repeater {
+            interface eth0
+            interface eth2
+            interface eth4
+        }
+    }
+}
+
+Configuration node files/scripts have been copied from 
+EdgeOS v1.9.7+hotfix.2.5010181.170818.0412. Thank you Ubiquity!

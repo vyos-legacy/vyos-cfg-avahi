@@ -1,0 +1,9 @@
+priority: 900
+help: mDNS repeater configuration
+
+end:
+    if [ ${COMMIT_ACTION} == DELETE ]; then
+        sudo /opt/vyatta/sbin/ubnt-mdns-repeater.pl --stop;
+    else
+        sudo /opt/vyatta/sbin/ubnt-mdns-repeater.pl --update;
+    fi

@@ -1,0 +1,6 @@
+multi:
+type: txt
+help: Interface to repeat mdns advertisements to [REQUIRED]
+
+allowed: /opt/vyatta/sbin/vyatta-interfaces.pl --show=all
+commit:expression: exec "/opt/vyatta/sbin/vyatta-interfaces.pl --dev=$VAR(@) --warn"
